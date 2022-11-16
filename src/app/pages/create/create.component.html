@@ -1,0 +1,63 @@
+<mat-stepper #stepper>
+    <mat-step>
+      <form >
+        <ng-template matStepLabel>Создайте статью</ng-template>
+        <div>
+          <angular-editor [(ngModel)]="htmlContent" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
+          
+          <div class="x"></div>
+          <p></p>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Fill out your address</ng-template>
+          <div class="step1">
+          <mat-card class="setcard">
+            <div class="step2">
+            <input type="file" class="file-input"
+            (change)="onFileChanged($event)" #fileUpload>
+     
+            <div class="file-upload">
+     
+             {{fileNameUrl || "Выберите файл."}}
+     
+            <button mat-mini-fab color="primary" class="upload-btn"
+               (click)="fileUpload.click()">
+               <mat-icon>attach_file</mat-icon>
+            </button>
+            <img [src]="fileName" height="200px" width="200px" alt="Пока не выбрано" class="image">
+            </div>
+            </div>
+              <div class="step2">
+                <mat-form-field appearance="legacy" class="step3">
+                  <mat-label>Введите оглавление</mat-label>
+                  <input matInput placeholder="Заголовок" [formControl]="header">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Leave a comment</mat-label>
+                  <textarea matInput placeholder="Ex. It makes me feel..." [formControl]="context"></textarea>
+                </mat-form-field>
+              </div>
+            </mat-card>
+          </div>
+          
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <button mat-stroked-button (click)="onSave()">Сохранить</button>
+      <br>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

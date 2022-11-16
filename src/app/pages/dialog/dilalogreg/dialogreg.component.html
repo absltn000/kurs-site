@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Registration</h1>
+<div mat-dialog-content class="dialog">
+
+    <p>
+      <mat-form-field appearance="fill">
+          <mat-label>Введите имя</mat-label>
+          <input matInput placeholder="name" [formControl]="name" required>
+          <mat-error *ngIf="surname.invalid">Введите имя</mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+          <mat-label>Введите фамилию</mat-label>
+          <input matInput placeholder="surname" [formControl]="surname" required>
+          <mat-error *ngIf="surname.invalid">Введите фамилию</mat-error>
+        </mat-form-field>
+    </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Введите почту</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Введите пароль</mat-label>
+            <input matInput placeholder="password" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">Пароль должен быть из 6 символов</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose one</mat-label>
+          <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+            <mat-option value="invalid">Пусто</mat-option>
+            <mat-option value="valid">Женщина</mat-option>
+            <mat-option value="valid">Мужчина</mat-option>
+
+          </mat-select>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+          <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+            Your selection is invalid
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+</div>
+
+<mat-dialog-actions align="end">
+  
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="save()">Registrate</button>
+
+</mat-dialog-actions>

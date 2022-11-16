@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content class="dialog">
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Введите почту</mat-label>
+            <input matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">Почта введена некоректно</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Введите пароль</mat-label>
+            <input matInput placeholder="password" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">Пароль должен быть из 6 символов</mat-error>
+          </mat-form-field>
+    </p>
+</div>
+<mat-dialog-actions align="end">
+  
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="login()">Login</button>
+  
+  </mat-dialog-actions>
+
+
+

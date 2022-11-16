@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="click()">
+  <mat-icon>copyright</mat-icon>
+</button>
+<span>Copywriter</span>
+<span class="example-spacer"></span>
+<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="click2()">
+  <mat-icon>create</mat-icon>
+</button>
+
+<span *ngIf="(user$|async) as user1">
+  <div *ngIf="user1">
+  <div *ngIf="user1"><img [src]="($any(user1).image!=undefined && $any(user1).image!='') ? $any(user1).image : './assets/images/photo_2022-03-08_21-39-53.jpg'" class="image2"> 
+    <a mat-button (click)="goOptions()">{{$any(user1).name}} {{$any(user1).surname}}</a>
+    <button *ngIf="auth.isAuth" color="cold" mat-button (click)="logout()" [disabled]="!auth.isAuth" >Logout</button>
+  </div>
+  
+  </div>
+</span>
+<button *ngIf="!auth.isAuth" color="cold" mat-button (click)="openDialog('Login')" [disabled]="auth.isAuth" >Login</button>
+<button *ngIf="!auth.isAuth" color="cold" mat-button (click)="openDialog('Registration')" [disabled]="auth.isAuth" >Registration</button>
+
+
+</mat-toolbar>
+<router-outlet></router-outlet>

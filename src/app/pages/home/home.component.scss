@@ -1,0 +1,113 @@
+.example-card {
+    width: 600px;
+    margin-bottom: 8px;
+  }
+.x{
+
+    margin: 5px;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    overflow: auto;
+    justify-content: center;
+}
+.firstrow
+{
+  display: block;
+}
+.secondrow
+{
+  display: block;
+  padding-left: 35px;
+  padding-top: 5px;
+}
+.mainlist
+{
+  display: flex;
+}
+.image1
+{
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+}
+.firstblock
+{
+  display: block;
+  width: 1200px;
+  border-right: 1px solid black;
+}
+.card1
+{
+  width: 350px;
+  margin: 5px;
+}
+.x1{
+
+  margin: 5px;
+  display:flex;
+  align-items: center;
+  align-content: center;
+  overflow: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+
+
+}
+.imagecard
+{
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+.Authorimage
+{
+  width: 30px;
+  height: 30px;
+border-radius: 100%;
+}
+.setcard
+{
+    margin: 5px;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    max-width: 1000px;
+    height: auto;
+}
+.step1
+{
+    width: auto;
+    display: flex;
+    align-items: center;
+    align-content: center; 
+    justify-content: center; 
+    overflow: auto; 
+}
+.step2
+{
+    margin-right: 7px;
+    display: block;
+}
+.step3
+{
+    display: block;
+}
+.image-save
+{
+    width: 200px;
+    height: 200px;
+    margin-right: 5px;
+    padding-left: 0px;
+    //background-image: url('');
+}
+.header
+{
+  text-align: left;
+  display: block;
+}
+h1{
+  border-bottom: 2px solid gray;
+  max-width: 300px;
+  margin-left: 10px;
+}

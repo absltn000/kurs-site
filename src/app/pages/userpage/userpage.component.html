@@ -1,0 +1,90 @@
+<mat-tab-group>
+    <mat-tab label="Favorite page"> 
+        <div *ngFor="let article of array;index as i">
+        <div *ngIf="!search.ban(article.id) && search.favorite(article.id)">
+        <mat-card class="example-card">
+    
+          <mat-card-title-group>
+            <mat-card-subtitle><img [src]="(search.getImage(article.authorId)!=undefined && search.getImage(article.authorId)!='' ? search.getImage(article.authorId) : './assets/images/photo_2022-03-08_21-39-53.jpg')" class="Authorimage">{{search.getAuthor(article.authorId)}}</mat-card-subtitle>
+            <mat-card-title>{{article.header}}</mat-card-title>
+            <img mat-card-sm-image [src]="article.imageUrl" class="imagecard">
+          </mat-card-title-group>
+          <mat-card-content class="content">
+            {{article.context}}
+          </mat-card-content>
+          <button mat-button (click)="onClick(article)">Посмотреть </button><button mat-icon-button (click)="search.favoriteSet(article.id)"><mat-icon>{{search.favorite(article.id) ? "favorite" : "favorite_border"}}</mat-icon></button> <button mat-icon-button (click)="search.banSet(article.id)"><mat-icon>highlight_off</mat-icon></button>
+        </mat-card>
+      </div> 
+    </div>
+    </mat-tab>
+    <mat-tab label="Ban page"> <div *ngFor="let article of array;index as i">
+        <div *ngIf="search.ban(article.id)">
+        <mat-card class="example-card">
+    
+          <mat-card-title-group>
+            <mat-card-subtitle><img [src]="(search.getImage(article.authorId)!=undefined && search.getImage(article.authorId)!='' ? search.getImage(article.authorId) : './assets/images/photo_2022-03-08_21-39-53.jpg')" class="Authorimage">{{search.getAuthor(article.authorId)}}</mat-card-subtitle>
+            <mat-card-title>{{article.header}}</mat-card-title>
+            <img mat-card-sm-image [src]="article.imageUrl" class="imagecard">
+          </mat-card-title-group>
+          <mat-card-content class="content">
+            {{article.context}}
+          </mat-card-content>
+          <button mat-button (click)="onClick(article)">Посмотреть </button><button mat-icon-button (click)="search.favoriteSet(article.id)"><mat-icon>{{search.favorite(article.id) ? "favorite" : "favorite_border"}}</mat-icon></button> <button mat-icon-button (click)="search.banSet(article.id)"><mat-icon>highlight_off</mat-icon></button>
+        </mat-card>
+      </div> 
+    </div> </mat-tab>
+    <mat-tab label=" Written page"><div *ngFor="let article of array;index as i">
+        <div *ngIf="search.written(article.id)">
+        <mat-card class="example-card">
+    
+          <mat-card-title-group>
+            <mat-card-subtitle><img [src]="(search.getImage(article.authorId)!=undefined && search.getImage(article.authorId)!='' ? search.getImage(article.authorId) : './assets/images/photo_2022-03-08_21-39-53.jpg')" class="Authorimage">{{search.getAuthor(article.authorId)}}</mat-card-subtitle>
+            <mat-card-title>{{article.header}}</mat-card-title>
+            <img mat-card-sm-image [src]="article.imageUrl" class="imagecard">
+          </mat-card-title-group>
+          <mat-card-content class="content">
+            {{article.context}}
+          </mat-card-content>
+          <button mat-button (click)="onClick(article)">Посмотреть </button><button mat-icon-button (click)="search.favoriteSet(article.id)"><mat-icon>{{search.favorite(article.id) ? "favorite" : "favorite_border"}}</mat-icon></button> 
+          <button mat-icon-button (click)="search.banSet(article.id)"><mat-icon>highlight_off</mat-icon></button>
+          <button mat-icon-button (click)="search.deleteArticle(article.id)"><mat-icon>clear</mat-icon></button>
+        </mat-card>
+      </div> 
+    </div> </mat-tab>
+    <mat-tab label="Account">
+        <form>
+              <div class="step1">
+              <mat-card class="setcard">
+                <div class="step2">
+                <input type="file" class="file-input"
+                (change)="onFileChanged($event)" #fileUpload>
+         
+                <div class="file-upload">
+         
+                 {{fileNameUrl || "Выберите файл."}}
+         
+                <button mat-mini-fab color="primary" class="upload-btn"
+                   (click)="fileUpload.click()">
+                   <mat-icon>attach_file</mat-icon>
+                </button>
+                <img [src]="fileName" height="200px" width="200px" alt="Пока не выбрано" class="image">
+                </div>
+                </div>
+                  <div class="step2">
+                    <mat-form-field appearance="fill" class="step3">
+                      <mat-label>Введите имя</mat-label>
+                      <input matInput placeholder="Имя" [formControl]="name" required>
+                      <mat-error *ngIf="surname.invalid">Введите имя</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="step3">
+                        <mat-label>Введите имя</mat-label>
+                        <input matInput placeholder="Фамилия" [formControl]="surname" required>
+                        <mat-error *ngIf="surname.invalid">Введите фамилию</mat-error>
+                      </mat-form-field>
+                  </div>
+                </mat-card>
+                <button mat-button (click)="setUser()">Сохранить</button>
+              </div>
+          </form>
+    </mat-tab>
+</mat-tab-group>

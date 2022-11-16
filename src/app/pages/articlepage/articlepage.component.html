@@ -1,0 +1,26 @@
+
+<h1><img [src]="(httpSearch.getImage(arr[0].authorId)!=undefined && httpSearch.getImage(arr[0].authorId)!='' ? httpSearch.getImage(arr[0].authorId) : './assets/images/photo_2022-03-08_21-39-53.jpg')" class="Authorimage">{{httpSearch.getAuthor(arr[0].authorId)}}</h1>
+<div class="x">
+    <div class="div1"></div>  
+</div>
+<div class="x1">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." [formControl]="comment"></textarea>
+    </mat-form-field>
+    <button mat-button (click)="AddComment(arr[0])" class="example-full-width">Добавить комментарий</button>
+</div>
+<div class="x1">
+    
+<div *ngFor="let comment1 of page1?.comments" class="x2">
+    <mat-card class="example-card" class="card1">
+      
+        <mat-card-title-group>
+          <mat-card-subtitle><img [src]="(httpSearch.getImage(comment1.userId)!=undefined && httpSearch.getImage(comment1.userId)!='' ? httpSearch.getImage(comment1.userId) : './assets/images/photo_2022-03-08_21-39-53.jpg')" class="Authorimage">{{httpSearch.getAuthor(comment1.userId)}}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content class="content">
+          {{comment1.text}}
+        </mat-card-content>
+      </mat-card>
+</div>
+</div>
